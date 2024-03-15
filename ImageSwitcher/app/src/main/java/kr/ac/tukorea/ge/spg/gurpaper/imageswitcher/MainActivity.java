@@ -2,6 +2,7 @@ package kr.ac.tukorea.ge.spg.gurpaper.imageswitcher;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,8 +20,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBtnPrev(View view) {
+        ImageView iv = findViewById(R.id.mainImageView);
+        iv.setImageResource(R.mipmap.cat_1);
     }
 
     public void onBtnNext(View view) {
+        ImageView iv = findViewById(R.id.mainImageView);
+        iv.setImageResource(R.mipmap.cat_2);
     }
 }
