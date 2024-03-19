@@ -24,11 +24,14 @@ public class MainActivity extends AppCompatActivity {
     public void onBtnCard(View view) {
         Log.d("Tag", "Card!!");
 
+        ImageButton imageButton = (ImageButton) view;
+        if(previousImageButton == imageButton){
+            return;
+        }
         if (previousImageButton != null) {
             previousImageButton.setImageResource(R.mipmap.card_blue_back);
         }
-        
-        ImageButton imageButton = (ImageButton) view;
+
         imageButton.setImageResource(R.mipmap.card_as);
 
         previousImageButton = imageButton;
