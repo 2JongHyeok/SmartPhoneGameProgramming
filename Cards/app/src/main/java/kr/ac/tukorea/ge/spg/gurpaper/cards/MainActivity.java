@@ -34,7 +34,19 @@ public class MainActivity extends AppCompatActivity {
 
         for(int i = 0; i < IMAGE_BTN_IDS.length; ++i){
             ImageButton ib = findViewById(IMAGE_BTN_IDS[i]);
-            ib.setImageResource(CARD_RES_IDS[i]);
+
+            // #1
+            // int resId = CARD_RES_IDS[i];
+            // Integer intObj = new Integer(resId);
+            // ib.setTag(intObj);
+
+            // #2
+            // int resId = CARD_RES_IDS[i];
+            // Integer intObj = resId;
+            // ib.setTag(intObj);
+
+            // #3
+            ib.setTag(CARD_RES_IDS[i]);
         }
     }
 
@@ -46,11 +58,20 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        int resId = (Integer)imageButton.getTag();
         if (previousImageButton != null) {
+            int prevResId = (Integer)previousImageButton.getTag();
+            if(resId == prevResId){
+                // remove 2 cards
+                previousImageButton.setVisibility(View.INVISIBLE);
+                imageButton.setVisibility(View.INVISIBLE);
+                previousImageButton = null;
+                return;
+            }
             previousImageButton.setImageResource(R.mipmap.card_blue_back);
         }
 
-        imageButton.setImageResource(R.mipmap.card_as);
+        imageButton.setImageResource(resId);
 
         previousImageButton = imageButton;
     }
